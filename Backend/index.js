@@ -8,7 +8,7 @@ const app = express()
 mongoose
     .connect(mongoUrl, {})
     .then(() => {
-        console.log('MongoDB is connected')
+        console.log('MongoDB jest połączone')
     })
     .catch((err) => {
         throw err
@@ -19,5 +19,5 @@ app.use(express.json())
 app.use(cors())
 
 app.listen(config.app.port, () => {
-    console.log('Server Node.js is up and running');
+    console.log(`Serwer Node.js wstał i chodzi na http://${config.db.host}:${config.db.port}/${config.db.dbname}`);
 }); 
