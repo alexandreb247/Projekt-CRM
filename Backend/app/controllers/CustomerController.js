@@ -1,7 +1,7 @@
 const Customer = require('../models/CustomerModel');
 
 module.exports = {
-    index: (req, res) => {
+    list: (req, res) => {
         Customer.find({})
             .then((customers) => {
 
@@ -9,6 +9,21 @@ module.exports = {
             }).catch((err) => {
                 res.send(err)
             })
+    },
+
+    getByID: (req, res) => {
+        const id = req.params.id;
+        Customer.findById(id)
+            .then(customer => {
+                if (!customer) {
+                    return res.status(404).json({ message: 'Customer not found' });
+                }
+                res.json(customer);
+            })
+            .catch(err => {
+                console.error(err);
+                res.status(500).json({ error: err.message });
+            });
     },
 
     create: (req, res) => {
@@ -39,9 +54,25 @@ module.exports = {
             })
     },
 
+    updateByID: (req, res) => {
+        const id = req.params.id;
+        Customer.findByIdAndUpdate(id, req.body, { new: true })
+            .then(updatedCustomer => {
+                if (!updatedCustomer) {
+                    return res.status(404).json({ message: 'Customer not found' });
+                }
+                res.json(updatedCustomer);
+            })
+            .catch(err => {
+                console.error(err);
+                res.status(500).json({ error: err.message });
+            });
+    },
+
+
     delete: (req, res) => {
-        const id = req.params.id
-        Customer.findByIdAndDelete(req.params.id)
+        const id = req.params.id;
+        Customer.findByIdAndDelete(id)
             .then(response => {
                 return res.status(204).json({
                     id: id,
