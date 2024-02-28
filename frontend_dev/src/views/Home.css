@@ -1,0 +1,45 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 150px;
+    background: lavender;
+    padding: 50px 20px; 
+    border: 2px solid #007bff; 
+    border-radius: 30px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    max-width: 600px; 
+}
+.header {
+    text-align: center; 
+    color: #3c009d; 
+    font-size: 2.5rem; 
+    margin-bottom: 20px; 
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.submit {
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    padding: 10px 30px; 
+    font-size: 18px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; 
+}
+
+.submit:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05); 
+}
+
+.submit a {
+    color: white; 
+    text-decoration: none; 
+}

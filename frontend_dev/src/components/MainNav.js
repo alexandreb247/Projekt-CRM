@@ -1,4 +1,4 @@
-// import './MainNav.css'
+import './MainNav.css'
 import { useNavigate, Link } from 'react-router-dom';
 
 
