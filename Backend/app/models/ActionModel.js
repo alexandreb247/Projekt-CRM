@@ -14,7 +14,11 @@ const Action = new Schema(
         description: {
             type: String, 
             required: true,
-        }
+        },
+        clientId: {
+            type: String, 
+            required: true,
+        },
     }
 );
 module.exports = mongoose.model('Action', Action)

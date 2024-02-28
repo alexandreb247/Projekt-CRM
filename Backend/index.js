@@ -19,8 +19,8 @@ app.use(express.json())
 app.use(cors())
 
 /* API Routes */
-const customerRoutes = require('./app/routes/CustomerRoutes')
-app.use('/customers', customerRoutes);
+const customerRoutes = require('./app/routes/CustomerRoutes')()
+app.use('/', customerRoutes);
 
 app.listen(config.app.port, () => {
     console.log(`Serwer Node.js chodzi na ${config.db.host}:${config.db.port}/${config.db.dbname}`);
