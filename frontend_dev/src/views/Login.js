@@ -29,7 +29,7 @@ const Login = (props) => {
         e.preventDefault();
         
         axios
-        .post("http://localhost:5050/user/login", {
+        .post("http://localhost:5050/users/login", {
             email: formData.email,
             password: formData.password
         })
