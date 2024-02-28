@@ -4,7 +4,7 @@ module.exports = {
     addAction: (req, res) => {
         let newAction = new ActionModel({
             description: req.body.description,
-            contact_date: req.body.contact_date,
+            date: req.body.date,
             type: req.body.type,
             clientId: req.body.customerId,
         })

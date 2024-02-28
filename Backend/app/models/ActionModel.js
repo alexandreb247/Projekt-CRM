@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const Action = new Schema(
     {
-        contact_date: {
+        date: {
             type: String, 
             required: true,
         },

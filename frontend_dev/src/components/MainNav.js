@@ -31,7 +31,7 @@ const MainNav = (props) => {
                     <Link to="/" onClick={handleLogout}>Logout</Link>
                 </li>)}
                 {props.user && (<li>
-                    <Link to="/customer/list" >Customers</Link>
+                    <Link to="/customers/list" >Customers</Link>
                 </li>)}
             </ul>
         </nav>

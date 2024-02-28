@@ -52,7 +52,7 @@ const CustomersList = (props) => {
         <>  <div>
             <form className="findCustomerForm">
                 <textarea placeholder="Find customer..." onChange={(e) => setSearchPhrase(e.target.value)}></textarea>
-                <Link to={`/customer/addcustomer`} className="btn">Add</Link>
+                <Link to={`/customers/addcustomer`} className="btn">Add</Link>
             </form>
         </div>
             <div className="customers table">
@@ -76,7 +76,7 @@ const CustomersList = (props) => {
                                     <td>{customer.company}</td>
                                     <td>{customer.name}</td>
                                     <td>{customer.nip}</td>
-                                    <td><Link to={`/customer/${customer._id}`} className="knob">Details</Link>
+                                    <td><Link to={`/customers/${customer._id}`} className="knob">Details</Link>
                                         <button className="knob" onClick={() => removeCustomer(customer._id)}>Delete</button>
                                     </td>
                                 </tr>

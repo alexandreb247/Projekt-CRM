@@ -1,111 +1,120 @@
-import axios from "axios";
-import { useState } from "react";
-import { Alert, Button, Form } from "react-bootstrap";
+import { useState } from 'react';
+// import './AddCustomer.css'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const AddCustomer = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    address: {
-      street: "",
-      zipCode: "",
-      city: "",
-    },
-    nip: "",
-  });
+const AddCustomer = (props) => {
+    const navigate = useNavigate()
 
-  const [submitStatus, setSubmitStatus] = useState("");
 
-  const handleInputData = (e) => {
-    const target = e.target;
-    const name = target.name;
-
-    setFormData((data) => {
-      return { ...data, [name]: target.value };
+    const [customerData, setCustomerData] = useState({
+        city: "",
+        street: "",
+        zipcode: "",
+        company: "",
+        name: "",
+        nip: "",
     });
-  };
 
-  const handleAddressInputData = (e) => {
-    const target = e.target;
-    const name = target.name;
+    const handleInputChange = (e) => {
+        const target = e.target;
+        const name = target.name;
 
-    setFormData((data) => {
-      const dataAddress = { ...data.address, [name]: target.value };
-      return { ...data, address: dataAddress };
-    });
-  };
+        setCustomerData({
+            ...customerData,
+            [name]: target.value,
+        });
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    axios.post("/customer/add", formData).then((res) => {
-      if (!res.data.error) {
-        setSubmitStatus("Dodano kienta");
-      }
-    });
-  };
+        axios
+            .post("http://localhost:5050/customers/addcustomer", {
+                name: customerData.name,
+                address: {
+                    city: customerData.city,
+                    street: customerData.street,
+                    zipcode: customerData.zipcode,
+                },
+                company: customerData.company,
+                nip: customerData.nip
 
-  console.log(formData);
+            })
+            .then((res) => {
+                props.allCustomers()
+                navigate(`/customers/list`)
 
-  return (
-    <Form className="w-50" onSubmit={handleSubmit}>
-      {submitStatus && <Alert variant="success">{submitStatus}</Alert>}
-      <Form.Group className="mb-3" controlId="name">
-        <Form.Label>Nazwa klienta</Form.Label>
-        <Form.Control
-          name="name"
-          type="text"
-          placeholder="Nazwa klienta"
-          value={formData.name}
-          onChange={handleInputData}
-        />
-      </Form.Group>
-      <fieldset className="mb-3">
-        <strong>Adres:</strong>
-        <Form.Group className="mb-1" controlId="street">
-          <Form.Label>Ulica numer</Form.Label>
-          <Form.Control
-            name="street"
-            type="text"
-            placeholder="Ulica numer"
-            value={formData.address.street}
-            onChange={handleAddressInputData}
-          />
-        </Form.Group>
-        <Form.Group className="mb-1" controlId="zipCode">
-          <Form.Label>Kod pocztowy</Form.Label>
-          <Form.Control
-            name="zipCode"
-            type="text"
-            placeholder="Kod pocztowy"
-            value={formData.address.zipCode}
-            onChange={handleAddressInputData}
-          />
-        </Form.Group>
-        <Form.Group className="mb-1" controlId="city">
-          <Form.Label>Miasto</Form.Label>
-          <Form.Control
-            name="city"
-            type="text"
-            placeholder="Miasto"
-            value={formData.address.city}
-            onChange={handleAddressInputData}
-          />
-        </Form.Group>
-      </fieldset>
-      <Form.Group className="mb-3" controlId="nip">
-        <Form.Label>NIP</Form.Label>
-        <Form.Control
-          name="nip"
-          type="text"
-          placeholder="NIP klienta"
-          value={formData.nip}
-          onChange={handleInputData}
-        />
-      </Form.Group>
-      <Button type="submit">Dodaj</Button>
-    </Form>
-  );
+            })
+
+
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+
+
+    return (
+        <div className="addCustomer container">
+            <form className="addCustomerData" onSubmit={handleSubmit}>
+                <h1>Create new customer</h1>
+                <label>Name
+                    <input
+                        type='text'
+                        id='name'
+                        name='name'
+                        value={customerData.name}
+                        onChange={handleInputChange}
+                    />
+                </label>
+                <label>Address</label>
+                <div className='address'>
+                    <label>City
+                        <input
+                            type='text'
+                            id='city'
+                            name='city'
+                            value={customerData.city}
+                            onChange={handleInputChange} />
+                    </label>
+                    <label>Street
+                        <input
+                            type='text'
+                            id='street'
+                            name='street'
+                            value={customerData.street}
+                            onChange={handleInputChange} />
+                    </label>
+                    <label>Zipcode
+                        <input
+                            type='text'
+                            id='zipcode'
+                            name='zipcode'
+                            value={customerData.zipcode}
+                            onChange={handleInputChange} />
+                    </label>
+                </div>
+                <label>Company
+                    <input
+                        type='text'
+                        id='company'
+                        name='company'
+                        value={customerData.company}
+                        onChange={handleInputChange} />
+                </label>
+                <label>Nip
+                    <input
+                        type='text'
+                        id='nip'
+                        name='nip'
+                        value={customerData.nip}
+                        onChange={handleInputChange} />
+                </label>
+                <button className="btn">Save</button>
+            </form>
+        </div>
+    );
 };
 
 export default AddCustomer;

@@ -22,7 +22,7 @@ const SingleCustomer = (props) => {
 
     const getDetails = () => {
         axios
-            .get(`http://localhost:5050/customer/${id}`)
+            .get(`http://localhost:5050/customers/${id}`)
             .then((res) => {
                 setClientDetails(res.data)
 
@@ -70,14 +70,14 @@ const SingleCustomer = (props) => {
                             return (
                                 <tr key={clientAction._id}>
                                     <td>{clientAction.type}</td>
-                                    <td>{clientAction.contact_date}</td>
+                                    <td>{clientAction.date}</td>
                                     <td>{clientAction.description}</td>
                                 </tr>
                             )
                         })}
                     </tbody>
                     <div className="action">
-                        <Link to={`/customer/${id}/add`} className="addaction">Add action</Link>
+                        <Link to={`/customers/${id}/add`} className="addaction">Add action</Link>
                     </div>
                 </table>
 
