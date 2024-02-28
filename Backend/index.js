@@ -4,6 +4,8 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const mongoUrl = `mongodb://${config.db.host}:${config.db.port}/${config.db.dbname}`
 const app = express()
+const cookieParser = require("cookie-parser")
+
 
 mongoose
     .connect(mongoUrl, {})
@@ -17,8 +19,12 @@ mongoose
 
 app.use(express.json())
 app.use(cors())
+app.use(cookieParser())
 
 /* API Routes */
+const userRoutes = require('./app/routes/UserRoutes')
+app.use("/users", userRoutes);
+
 const customerRoutes = require('./app/routes/CustomerRoutes')()
 app.use('/', customerRoutes);
 
