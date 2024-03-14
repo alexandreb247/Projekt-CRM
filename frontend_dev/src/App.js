@@ -1,8 +1,8 @@
-import "./App.css";
-import AppRoutes from "./routes/AppRoutes";
-import MainNav from "./components/MainNav";
-import axios from "axios";
 import { useEffect, useState } from 'react';
+import './App.css';
+import MainNav from './components/MainNav';
+import AppRoutes from './routes/AppRoutes';
+import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
@@ -14,7 +14,7 @@ function App() {
     const allCustomers = () => {
 
         axios
-            .get("http://localhost:5050/customer/list")
+            .get("http://localhost:5050/customers/list")
             .then((res) => {
                 setCustomers(res.data)
             })

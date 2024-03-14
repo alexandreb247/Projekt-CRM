@@ -1,0 +1,64 @@
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+}
+
+.inputs,
+.submit-container {
+    margin-top: 20px;
+}
+
+.input {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.submit {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 20px; 
+}

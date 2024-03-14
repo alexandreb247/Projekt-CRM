@@ -1,0 +1,34 @@
+.customer table * {
+    max-width: 600px;
+    margin: auto;
+    border: 1px solid black;
+    padding: 8px;
+    /* text-align: left; */
+    border-spacing: 3px;
+}
+
+table {
+    margin: auto;
+}
+
+.addaction {
+    background-color: #4c00b4;
+    cursor: pointer;
+    padding: 10px;
+    border: solid;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.addaction:hover {
+    background-color: #00538a;
+    cursor: pointer;
+}
+
+.action {
+    display: flex;
+    margin: auto;
+    padding-bottom: 30px;
+}

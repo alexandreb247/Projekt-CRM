@@ -1,10 +1,10 @@
 import { Link, useParams } from 'react-router-dom';
-// import './SingleCustomer.css';
+import './SingleCustomer.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 
-const SingleCustomer = (props) => {
+const CustomerDetails = (props) => {
 
     const { id } = useParams()
 
@@ -87,4 +87,4 @@ const SingleCustomer = (props) => {
 }
 
 
-export default SingleCustomer;
+export default CustomerDetails;

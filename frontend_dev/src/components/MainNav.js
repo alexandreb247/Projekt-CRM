@@ -2,7 +2,7 @@ import './MainNav.css'
 import { useNavigate, Link } from 'react-router-dom';
 
 
-const MainNav = (props) => {
+const AppNav = (props) => {
 
     const navigate = useNavigate()
 
@@ -38,4 +38,4 @@ const MainNav = (props) => {
     );
 }
 
-export default MainNav;
+export default AppNav;

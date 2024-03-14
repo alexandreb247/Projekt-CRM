@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import './Signup.css'
+//import './Signup.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -70,12 +70,12 @@ const Signup = () => {
             })
         }
 
-        if (formData.password.trim().length < 8) {
+        if (formData.password.trim().length < 6) {
             validationErrors.password = true;
             setErrors((prevErrors) => {
                 return {
                     ...prevErrors,
-                    password: "Password should have at least 8 characters",
+                    password: "Password should have at least 6 characters",
                 }
             })
 
@@ -139,7 +139,9 @@ const Signup = () => {
                 password: formData.password
             })
             .then((res) => {
-                console.log(res.data);
+                console.log(res.data)
+
+                let resData = res.data;
                 navigate("/login")
 
             })
