@@ -12,7 +12,6 @@ module.exports = {
     },
 
 
-
     getByID: (req, res) => {
         const id = req.params.id;
         Customer.findById(id)

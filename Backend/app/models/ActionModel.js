@@ -18,7 +18,7 @@ const Action = new Schema(
         clientId: {
             type: String, 
             required: true,
-        },
+        }
     }
 );
 module.exports = mongoose.model('Action', Action)

@@ -14,7 +14,7 @@ const CustomerDetails = (props) => {
 
     const getActions = () => {
         axios
-            .get(`http://localhost:5050/actions/${id}/actions`)
+            .get(`http://localhost:5050/actions/${id}`)
             .then((res) => {
                 setClientActions(res.data)
             })
@@ -77,7 +77,7 @@ const CustomerDetails = (props) => {
                         })}
                     </tbody>
                     <div className="action">
-                        <Link to={`/customers/${id}/add`} className="addaction">Add action</Link>
+                        <Link to={`/action/add/${id}`} className="addaction">Add action</Link>
                     </div>
                 </table>
 

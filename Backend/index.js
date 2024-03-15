@@ -28,6 +28,9 @@ app.use("/users", userRoutes);
 const customerRoutes = require('./app/routes/CustomerRoutes')()
 app.use('/', customerRoutes);
 
+const actionRoutes = require('./app/routes/CustomerActionsRoutes')
+app.use('/', actionRoutes);
+
 app.listen(config.app.port, () => {
     console.log(`Serwer Node.js chodzi na ${config.db.host}:${config.db.port}/${config.db.dbname}`);
 }); 

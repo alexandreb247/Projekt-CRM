@@ -136,7 +136,7 @@ const Login = (props) => {
                 setLoginMessage("");
                 props.setUser(res.data)
                 localStorage.setItem('user', JSON.stringify(res.data));
-                navigate("/customers")
+                navigate("/customers/list")
             }
 
             console.log(res.data)
