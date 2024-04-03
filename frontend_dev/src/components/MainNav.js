@@ -17,25 +17,21 @@ const AppNav = (props) => {
     return (
         <nav className="mainNav">
             <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
                 {!props.user && (<li>
                     <Link to="/signup">Signup</Link>
                 </li>)}
                 {!props.user && (<li>
                     <Link to="/login">Login</Link>
                 </li>)}
+                {props.user && (<li>
+                    <Link to="/customers/list" >Customers</Link>
+                </li>)}
                 {props.user && 
                 (<li>
                     <Link to="/" onClick={handleLogout}>Logout</Link>
-                </li>)}
-                {props.user && (<li>
-                    <Link to="/customers/list" >Customers</Link>
                 </li>)}
             </ul>
         </nav>
     );
 }
-
 export default AppNav;

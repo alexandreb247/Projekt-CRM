@@ -77,7 +77,7 @@ const CustomerDetails = (props) => {
                         })}
                     </tbody>
                     <div className="action">
-                        <Link to={`/action/add/${id}`} className="addaction">Add action</Link>
+                        <Link to={`/actions/add/${id}`} className="addaction">Add action</Link>
                     </div>
                 </table>
 

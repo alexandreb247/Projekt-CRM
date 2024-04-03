@@ -17,8 +17,9 @@ const AppRoutes = (props) => {
             <Route path="/customers/list" element={<CustomersList allCustomers={props.allCustomers} customer={props.customer} customers={props.customers}/>} />
             <Route path="/customers/:id" element={<SingleCustomer customer={props.customer}/>} />
             <Route path="/customers/addcustomer" element={<AddCustomer allCustomers={props.allCustomers}/>} />
-            <Route path="/customers/:id/add" element={<AddAction />} />
+            <Route path="/customers/edit/:id" component={CustomerEditForm} />
             <Route path="/customers/delete/:id" />
+            <Route path="/actions/add/:id" element={<AddAction />} />
         </Routes>
 
     );

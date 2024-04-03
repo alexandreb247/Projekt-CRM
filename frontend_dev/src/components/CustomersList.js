@@ -47,7 +47,6 @@ const CustomersList = (props) => {
 
     };
 
-
     return (
         <>  <div>
             <form className="findCustomerForm">
@@ -77,6 +76,7 @@ const CustomersList = (props) => {
                                     <td>{customer.name}</td>
                                     <td>{customer.nip}</td>
                                     <td><Link to={`/customers/${customer._id}`} className="knob">Details</Link>
+                                    <Link to={`/customers/edit/${customer._id}`} className="knob">Edit</Link>
                                         <button className="knob" onClick={() => removeCustomer(customer._id)}>Delete</button>
                                     </td>
                                 </tr>

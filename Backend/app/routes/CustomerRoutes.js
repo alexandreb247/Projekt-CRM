@@ -14,7 +14,7 @@ module.exports = () => {
     router.post('/customers/addcustomer', CustomerController.create)
 
     // PUT 
-    router.put('/customers/:id/add', CustomerController.updateByID)
+    router.put('/customers/edit/:id', CustomerController.updateByID)
 
     // DELETE 
     router.delete('/customers/delete/:id', CustomerController.delete)

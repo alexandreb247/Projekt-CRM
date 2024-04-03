@@ -4,15 +4,13 @@ const Schema = mongoose.Schema;
 const Customer = new Schema(
 {
     address: {
-      street: { type: String},
-      city: { type: String},
-      zipcode: { type: String}
+      street: { type: String, required: true},
+      city: { type: String, required: true},
+      zipcode: { type: String, required: true}
     },
     company: { type: String},
     name: { type: String, required: true },
-    nip: { type: String},
-    createdAt: { type: Date},
-    updatedAt: { type: Date}
+    nip: { type: String}
   });
 
 module.exports = mongoose.model('Customer', Customer)

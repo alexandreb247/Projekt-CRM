@@ -70,19 +70,23 @@ module.exports = {
             });
     },
 
-
     delete: (req, res) => {
         const id = req.params.id;
         Customer.findByIdAndDelete(id)
             .then(response => {
-                return res.status(204).json({
+                if (!response) {
+                    return res.status(404).json({ message: 'Customer not found' });
+                }
+
+                return res.status(200).json({ 
+                    message: 'Customer deleted',
                     id: id,
                     deleted: true
-                })
+                });
             })
             .catch(err => {
-                return res.status(500).json({ error: err });
-            })
-
+                console.error(err);
+                return res.status(500).json({ error: err.message });
+            });
     },
 }
