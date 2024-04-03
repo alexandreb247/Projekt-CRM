@@ -16,6 +16,7 @@
     "express-handlebars": "^7.1.2",
     "express-router": "^0.0.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.1.1"
+    "mongoose": "^8.1.1",
+    "react-router-bootstrap": "^0.26.2"
   }
 }

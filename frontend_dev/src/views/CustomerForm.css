@@ -1,0 +1,50 @@
+/* .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.addCustomerData {
+    display: flex;
+    flex-direction: column;
+}
+
+.addCustomerData h1 {
+    margin-bottom: 20px;
+}
+
+.addCustomerData label {
+    margin-bottom: 10px;
+}
+
+.addCustomerData input[type='text'] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.address {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    width: auto; 
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end; 
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+} */

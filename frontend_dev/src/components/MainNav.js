@@ -17,18 +17,12 @@ const AppNav = (props) => {
     return (
         <nav className="mainNav">
             <ul>
-                {!props.user && (<li>
-                    <Link to="/signup">Signup</Link>
-                </li>)}
-                {!props.user && (<li>
-                    <Link to="/login">Login</Link>
-                </li>)}
                 {props.user && (<li>
-                    <Link to="/customers/list" >Customers</Link>
+                    <Link to="/customers/list" >Klienci</Link>
                 </li>)}
                 {props.user && 
                 (<li>
-                    <Link to="/" onClick={handleLogout}>Logout</Link>
+                    <Link to="/" onClick={handleLogout}>Wyloguj</Link>
                 </li>)}
             </ul>
         </nav>

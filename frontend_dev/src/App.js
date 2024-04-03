@@ -14,7 +14,7 @@ function App() {
     const allCustomers = () => {
 
         axios
-            .get("http://localhost:5050/customers/list")
+            .get("http://localhost:5000/customers/list")
             .then((res) => {
                 setCustomers(res.data)
             })

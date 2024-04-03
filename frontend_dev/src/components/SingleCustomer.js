@@ -14,7 +14,7 @@ const CustomerDetails = (props) => {
 
     const getActions = () => {
         axios
-            .get(`http://localhost:5050/actions/${id}`)
+            .get(`http://localhost:5000/actions/${id}`)
             .then((res) => {
                 setClientActions(res.data)
             })
@@ -22,7 +22,7 @@ const CustomerDetails = (props) => {
 
     const getDetails = () => {
         axios
-            .get(`http://localhost:5050/customers/${id}`)
+            .get(`http://localhost:5000/customers/${id}`)
             .then((res) => {
                 setClientDetails(res.data)
 

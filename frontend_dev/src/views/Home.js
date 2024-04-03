@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
+import { Button } from "react-bootstrap";
 import './Home.css'
 
 const Home = () => {
     return (
         <div className="home-container">
-            <div className="header">Welcome to CRM</div>
+            <div className="header">CRM</div>
             <div className="submit-container">
-                <Link to="/signup"><button className="submit">Signup</button></Link>
-                <Link to="/login"><button className="submit">Login</button></Link>
+                <Button as={Link} to="/signup" className="submit">Signup</Button>
+                    <br></br>
+                <Button as={Link} to="/login" className="submit">Login</Button>
             </div>
         </div>
     )

@@ -133,7 +133,7 @@ const Signup = () => {
         }
 
         axios
-            .post("http://localhost:5050/users/signup", {
+            .post("http://localhost:5000/users/signup", {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password

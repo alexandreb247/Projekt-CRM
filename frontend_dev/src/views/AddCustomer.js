@@ -30,7 +30,7 @@ const AddCustomer = (props) => {
         e.preventDefault();
 
         axios
-            .post("http://localhost:5050/customers/addcustomer", {
+            .post("http://localhost:5000/customers/addcustomer", {
                 name: customerData.name,
                 address: {
                     city: customerData.city,

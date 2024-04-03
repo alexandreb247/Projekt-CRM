@@ -1,93 +1,86 @@
+import { Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'; 
 import axios from "axios";
 import { useEffect, useState } from "react";
 import './CustomersList.css';
-import { Link } from "react-router-dom";
-
-
 
 const CustomersList = (props) => {
     const [searchPhrase, setSearchPhrase] = useState('');
     const [filteredCustomers, setFilteredCustomers] = useState([]);
 
-
-    const filterCustomerList = () => {
-
-        let newList = props.customers.filter((customer) => {
-            return customer.name.toLowerCase().includes(searchPhrase)
-        })
-
+    useEffect(() => {
+        const newList = props.customers.filter(customer =>
+            customer.name.toLowerCase().includes(searchPhrase.toLowerCase())
+        );
         setFilteredCustomers(newList);
-    }
-
-
-    useEffect(() => {
-        filterCustomerList()
-    }, [searchPhrase]);
-
-
-    useEffect(() => {
-        setFilteredCustomers(props.customers)
-    }, [props.customers]);
-
-
-
+    }, [searchPhrase, props.customers]);
 
     const removeCustomer = (id) => {
         if (window.confirm('Usunąć klienta?')) {
-            axios
-                .delete(`http://localhost:5050/customers/delete/${id}`)
-                .then((res) => {
-                    props.allCustomers()
+            axios.delete(`http://localhost:5000/customers/delete/${id}`)
+                .then(() => {
+                    props.allCustomers();
                 })
                 .catch((err) => {
-                    console.error(err)
-
-                })
+                    console.error(err);
+                });
         }
-
     };
 
     return (
-        <>  <div>
-            <form className="findCustomerForm">
-                <textarea placeholder="Find customer..." onChange={(e) => setSearchPhrase(e.target.value)}></textarea>
-                <Link to={`/customers/addcustomer`} className="btn">Add</Link>
-            </form>
-        </div>
+        <>
+
+            <div className="customerCount">
+              <h3>  Liczba klientów w bazie danych: {filteredCustomers.length} </h3>
+            </div>
             <div className="customers table">
                 <table className="table table-bordered">
                     <thead className="thead-dark">
                         <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Company</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nr</th>
+                            <th scope="col">Adres</th>
+                            <th scope="col">Firma</th>
+                            <th scope="col">Nazwa klienta</th>
                             <th scope="col">Nip</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Menu</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredCustomers.map((customer) => {
-                            return (
-                                <tr key={customer._id} >
-                                    <td>{customer._id}</td>
-                                    <td> {customer.address.street} {customer.address.zipcode} {customer.address.city} </td>
-                                    <td>{customer.company}</td>
-                                    <td>{customer.name}</td>
-                                    <td>{customer.nip}</td>
-                                    <td><Link to={`/customers/${customer._id}`} className="knob">Details</Link>
-                                    <Link to={`/customers/edit/${customer._id}`} className="knob">Edit</Link>
-                                        <button className="knob" onClick={() => removeCustomer(customer._id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            );
-
-                        })}
+                        {filteredCustomers.map((customer, index) => ( 
+                            <tr key={customer._id}>
+                                <td>{index + 1}</td> 
+                                <td>{`${customer.address.street} ${customer.address.zipcode} ${customer.address.city}`}</td>
+                                <td>{customer.company}</td>
+                                <td>{customer.name}</td>
+                                <td>{customer.nip}</td>
+                                <td>
+                                <LinkContainer to={`/customers/${customer._id}`}>
+                                    <Button variant="info">Szczegóły</Button>
+                                </LinkContainer>
+                                <LinkContainer to={`/customers/edit/${customer._id}`}>
+                                    <Button variant="primary">Edycja</Button>
+                                </LinkContainer>
+                                <Button variant="danger" onClick={() => removeCustomer(customer._id)}>
+                                    Usuń
+                                </Button>
+                            </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Szukaj klienta..."
+                    onChange={(e) => setSearchPhrase(e.target.value)}
+                />
+                <LinkContainer to="/customers/addcustomer">
+                    <Button variant="success">Dodaj klienta</Button>
+                </LinkContainer>
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default CustomersList;

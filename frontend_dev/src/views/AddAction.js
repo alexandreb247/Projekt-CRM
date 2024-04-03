@@ -33,7 +33,7 @@ const AddAction = (props) => {
         console.log(formData)
 
         axios
-            .post(`http://localhost:5050/actions/addaction`, {
+            .post(`http://localhost:5000/actions/addaction`, {
                 description: formData.description,
                 type: formData.type,
                 date: formData.date,
